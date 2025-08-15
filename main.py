@@ -25,6 +25,19 @@ def main():
     df_csv = pl.read_csv("data/output.csv", try_parse_dates=True)
     logger.info("""sumary_line""")
     logger.info(df_csv)
+    result = df.select(
+        pl.col("name"),
+        pl.col("birthdate").dt.year().alias("birth_year"),
+        pl.col("weight"),
+        pl.col("height"),
+        (pl.col("weight") / (pl.col("height") ** 2)).alias("bmi"),
+    )
+    logger.info(result)
+    result_short = df.with_columns(
+        birth_year=pl.col("birthdate").dt.year(),
+        bmi=pl.col("weight") / (pl.col("height") ** 2),
+    )
+    logger.info(result_short)
 
 
 if __name__ == "__main__":

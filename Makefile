@@ -26,18 +26,18 @@ clean:
 	find . -type d -name ".mypy_cache" -exec rm -rf {} +
 
 lint: type-check
-	ruff check .
+	uv run ruff check .
 
 type-check:
-	ty check .
+	uv run ty check .
 
 format: lint
 	ruff format .
 
 run:
-	python main.py
+	uv run python main.py
 
 commit:
-	cz commit
+	uv run cz commit
 
 all: format lint type-check
