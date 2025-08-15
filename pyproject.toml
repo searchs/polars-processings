@@ -1,0 +1,25 @@
+[project]
+name = "macrobonds"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+]
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.8.3",
+    "pre-commit>=4.3.0",
+    "ruff>=0.12.9",
+    "ty>=0.0.1a18",
+]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver2"
+version_provider = "uv"
+update_changelog_on_bump = true
+major_version_zero = true
